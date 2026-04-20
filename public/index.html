@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Contrast Pro - WCAG Accessibility Checker</title>
+  <meta name="description" content="Professional WCAG 2.1 color contrast checker. Ensure your designs meet AA and AAA accessibility standards. Real-time preview and scoring.">
+  <meta name="keywords" content="color contrast, WCAG, accessibility, AA, AAA, color checker, web accessibility">
+  <meta property="og:title" content="Color Contrast Pro - WCAG Accessibility Checker">
+  <meta property="og:description" content="Ensure your designs meet WCAG AA and AAA accessibility standards with professional color contrast analysis.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          animation: {
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'shimmer': 'shimmer 2s linear infinite',
+            'fade-in': 'fadeIn 0.6s ease-out forwards',
+            'slide-up': 'slideUp 0.6s ease-out forwards',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            shimmer: {
+              '0%': { backgroundPosition: '-1000px 0' },
+              '100%': { backgroundPosition: '1000px 0' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(30px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style type="text/tailwindcss">
+    @layer utilities {
+      .glass {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .glass-dark {
+        background: rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .text-gradient {
+        background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .glow-blue { box-shadow: 0 0 40px rgba(96, 165, 250, 0.4); }
+      .glow-green { box-shadow: 0 0 40px rgba(74, 222, 128, 0.4); }
+      .glow-red { box-shadow: 0 0 40px rgba(248, 113, 113, 0.4); }
+    }
+  </style>
+</head>
+<body class="bg-[#0a0a0a] text-white min-h-screen font-sans overflow-x-hidden">
+  <!-- Background Effects -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-500/20 rounded-full blur-[150px] animate-pulse-slow"></div>
+    <div class="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-purple-500/20 rounded-full blur-[150px] animate-pulse-slow" style="animation-delay: 1s;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-pink-500/10 rounded-full blur-[200px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-dark border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-xl font-bold">
+          CC
+        </div>
+        <span class="text-xl font-bold">Color Contrast Pro</span>
+      </div>
+      <a href="#buy" class="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold hover:scale-105 transition-transform">
+        Get Pro — $19
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="relative pt-32 pb-20 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass mb-8 animate-fade-in">
+        <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+        <span class="text-sm text-gray-300">WCAG 2.1 Compliant</span>
+      </div>
+      <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight animate-slide-up" style="animation-delay: 0.1s;">
+        Ensure Perfect<br>
+        <span class="text-gradient">Color Contrast</span>
+      </h1>
+      <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.2s;">
+        Professional WCAG accessibility checker. Validate your designs against AA and AAA standards with real-time preview and detailed scoring.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style="animation-delay: 0.3s;">
+        <a href="#demo" class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-semibold text-lg hover:scale-105 transition-transform glow-blue">
+          Try Demo Free
+        </a>
+        <a href="#features" class="px-8 py-4 glass rounded-full font-semibold text-lg hover:bg-white/10 transition-colors">
+          View Features
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Demo Section -->
+  <section id="demo" class="relative py-20 px-6">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Live Contrast Checker</h2>
+      <p class="text-gray-400 text-center mb-12">Test any color combination against WCAG standards</p>
+
+      <div class="glass rounded-3xl p-8 md:p-12">
+        <!-- Color Inputs -->
+        <div class="grid md:grid-cols-2 gap-8 mb-8">
+          <div class="space-y-4">
+            <label class="text-sm text-gray-400 font-medium">Text Color (Foreground)</label>
+            <div class="flex gap-4">
+              <input type="color" id="textColor" value="#ffffff" class="w-16 h-16 rounded-xl cursor-pointer border-2 border-white/20">
+              <div class="flex-1">
+                <input type="text" id="textColorHex" value="#ffffff" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-mono uppercase focus:outline-none focus:border-blue-500 transition-colors">
+                <p class="text-xs text-gray-500 mt-2">Hex, RGB, or HSL</p>
+              </div>
+            </div>
+          </div>
+          <div class="space-y-4">
+            <label class="text-sm text-gray-400 font-medium">Background Color</label>
+            <div class="flex gap-4">
+              <input type="color" id="bgColor" value="#1a1a2e" class="w-16 h-16 rounded-xl cursor-pointer border-2 border-white/20">
+              <div class="flex-1">
+                <input type="text" id="bgColorHex" value="#1a1a2e" class="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-mono uppercase focus:outline-none focus:border-blue-500 transition-colors">
+                <p class="text-xs text-gray-500 mt-2">Hex, RGB, or HSL</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Preview -->
+        <div class="rounded-2xl p-8 mb-8 transition-all duration-300" id="previewBox">
+          <p class="text-2xl font-bold mb-4" id="previewLarge">Large Text Sample</p>
+          <p class="text-base" id="previewNormal">Normal text sample for contrast testing. This is how your content will look with the selected colors.</p>
+          <div class="mt-6 pt-6 border-t border-white/10">
+            <p class="text-sm opacity-80" id="previewSmall">Small text and links would appear like this in your design.</p>
+          </div>
+        </div>
+
+        <!-- Score Cards -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="glass-dark rounded-2xl p-6 text-center" id="aaLarge">
+            <div class="text-3xl font-bold mb-2">✓</div>
+            <div class="text-sm font-semibold">AA Large</div>
+            <div class="text-xs text-gray-400">3:1+</div>
+          </div>
+          <div class="glass-dark rounded-2xl p-6 text-center" id="aaNormal">
+            <div class="text-3xl font-bold mb-2">✓</div>
+            <div class="text-sm font-semibold">AA Normal</div>
+            <div class="text-xs text-gray-400">4.5:1+</div>
+          </div>
+          <div class="glass-dark rounded-2xl p-6 text-center" id="aaaLarge">
+            <div class="text-3xl font-bold mb-2">✗</div>
+            <div class="text-sm font-semibold">AAA Large</div>
+            <div class="text-xs text-gray-400">4.5:1+</div>
+          </div>
+          <div class="glass-dark rounded-2xl p-6 text-center" id="aaaNormal">
+            <div class="text-3xl font-bold mb-2">✗</div>
+            <div class="text-sm font-semibold">AAA Normal</div>
+            <div class="text-xs text-gray-400">7:1+</div>
+          </div>
+        </div>
+
+        <!-- Contrast Ratio Display -->
+        <div class="mt-8 text-center">
+          <div class="inline-flex items-center gap-4 px-8 py-4 glass rounded-full">
+            <span class="text-gray-400">Contrast Ratio:</span>
+            <span class="text-4xl font-bold text-gradient" id="contrastRatio">7.45:1</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Pro Features</h2>
+      <p class="text-gray-400 text-center mb-16 max-w-2xl mx-auto">Everything you need for professional accessibility testing</p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="glass rounded-2xl p-8 hover:border-blue-500/50 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">WCAG 2.1 Standards</h3>
+          <p class="text-gray-400">Full compliance with WCAG AA and AAA contrast requirements. Test against official accessibility guidelines.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-8 hover:border-purple-500/50 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Live Preview</h3>
+          <p class="text-gray-400">See exactly how your colors look together. Real-time preview with different text sizes and styles.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-8 hover:border-green-500/50 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Smart Suggestions</h3>
+          <p class="text-gray-400">Get automatic color suggestions when your contrast fails. Find the closest passing color instantly.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-8 hover:border-pink-500/50 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-pink-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Export Reports</h3>
+          <p class="text-gray-400">Generate professional PDF reports for clients. Document accessibility compliance for audits.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-8 hover:border-yellow-500/50 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">Bulk Testing</h3>
+          <p class="text-gray-400">Test entire color palettes at once. Upload your design system and validate all combinations.</p>
+        </div>
+
+        <div class="glass rounded-2xl p-8 hover:border-cyan-500/50 transition-colors group">
+          <div class="w-12 h-12 rounded-xl bg-cyan-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-6 h-6 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold mb-3">API Access</h3>
+          <p class="text-gray-400">Integrate with your workflow. REST API for automated testing in CI/CD pipelines.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="buy" class="py-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Simple Pricing</h2>
+      <p class="text-gray-400 mb-12">One-time purchase, lifetime access</p>
+
+      <div class="glass rounded-3xl p-10 max-w-md mx-auto border-2 border-blue-500/50 glow-blue">
+        <div class="text-sm text-blue-400 font-semibold mb-4">PRO LICENSE</div>
+        <div class="text-5xl font-bold mb-2">$19</div>
+        <div class="text-gray-400 mb-8">One-time payment</div>
+
+        <ul class="space-y-4 text-left mb-8">
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Unlimited contrast checks</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>PDF export & reports</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Bulk palette testing</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>API access</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            <span>Lifetime updates</span>
+          </li>
+        </ul>
+
+        <button id="buyBtn" class="w-full py-4 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full font-bold text-lg hover:scale-105 transition-transform">
+          Get Color Contrast Pro
+        </button>
+        <p class="text-sm text-gray-500 mt-4">30-day money-back guarantee</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+
+      <div class="space-y-4">
+        <details class="glass rounded-xl p-6 group">
+          <summary class="flex justify-between items-center cursor-pointer font-semibold">
+            What is WCAG contrast ratio?
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-gray-400 mt-4">WCAG (Web Content Accessibility Guidelines) defines minimum contrast ratios to ensure text is readable by people with visual impairments. AA requires 4.5:1 for normal text, while AAA requires 7:1.</p>
+        </details>
+
+        <details class="glass rounded-xl p-6 group">
+          <summary class="flex justify-between items-center cursor-pointer font-semibold">
+            Can I export my test results?
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-gray-400 mt-4">Yes! Pro users can generate professional PDF reports with all test results, color values, and compliance status. Perfect for client deliverables and accessibility audits.</p>
+        </details>
+
+        <details class="glass rounded-xl p-6 group">
+          <summary class="flex justify-between items-center cursor-pointer font-semibold">
+            Does it work with my design tools?
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-gray-400 mt-4">Absolutely. Copy/paste hex codes from Figma, Sketch, Adobe XD, or any design tool. Our API also integrates with CI/CD pipelines for automated testing.</p>
+        </details>
+
+        <details class="glass rounded-xl p-6 group">
+          <summary class="flex justify-between items-center cursor-pointer font-semibold">
+            What's included in the Pro version?
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-gray-400 mt-4">Pro includes unlimited checks, PDF export, bulk palette testing, API access, smart color suggestions, and all future updates. One-time payment, lifetime access.</p>
+        </details>
+
+        <details class="glass rounded-xl p-6 group">
+          <summary class="flex justify-between items-center cursor-pointer font-semibold">
+            Can I get a refund?
+            <span class="text-gray-400 group-open:rotate-180 transition-transform">▼</span>
+          </summary>
+          <p class="text-gray-400 mt-4">Yes, we offer a 30-day money-back guarantee. If you're not satisfied with Color Contrast Pro for any reason, contact us for a full refund.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-white/10 py-12 px-6">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-sm font-bold">
+          CC
+        </div>
+        <span class="text-gray-400">© 2026 Color Contrast Pro. All rights reserved.</span>
+      </div>
+      <div class="flex gap-6 text-gray-400">
+        <a href="#" class="hover:text-white transition-colors">Privacy</a>
+        <a href="#" class="hover:text-white transition-colors">Terms</a>
+        <a href="https://twitter.com" target="_blank" class="hover:text-white transition-colors">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Checkout Script -->
+  <script>
+    const CHECKOUT_URL = window.__CHECKOUT_URL || null;
+    document.getElementById('buyBtn')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (CHECKOUT_URL) window.open(CHECKOUT_URL, '_blank');
+      else alert('Store coming soon! Contact support for early access.');
+    });
+
+    // Color Contrast Logic
+    function hexToRgb(hex) {
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+      } : null;
+    }
+
+    function getLuminance(r, g, b) {
+      const [rs, gs, bs] = [r, g, b].map(v => {
+        v /= 255;
+        return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+      });
+      return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+    }
+
+    function getContrastRatio(hex1, hex2) {
+      const rgb1 = hexToRgb(hex1);
+      const rgb2 = hexToRgb(hex2);
+      if (!rgb1 || !rgb2) return 0;
+
+      const lum1 = getLuminance(rgb1.r, rgb1.g, rgb1.b);
+      const lum2 = getLuminance(rgb2.r, rgb2.g, rgb2.b);
+      const brightest = Math.max(lum1, lum2);
+      const darkest = Math.min(lum1, lum2);
+      return (brightest + 0.05) / (darkest + 0.05);
+    }
+
+    function updateContrast() {
+      const textColor = document.getElementById('textColor').value;
+      const bgColor = document.getElementById('bgColor').value;
+
+      document.getElementById('textColorHex').value = textColor;
+      document.getElementById('bgColorHex').value = bgColor;
+
+      const ratio = getContrastRatio(textColor, bgColor);
+      document.getElementById('contrastRatio').textContent = ratio.toFixed(2) + ':1';
+
+      // Update preview
+      const preview = document.getElementById('previewBox');
+      preview.style.backgroundColor = bgColor;
+      preview.style.color = textColor;
+
+      // Update scores
+      const aaLarge = ratio >= 3;
+      const aaNormal = ratio >= 4.5;
+      const aaaLarge = ratio >= 4.5;
+      const aaaNormal = ratio >= 7;
+
+      updateScoreCard('aaLarge', aaLarge);
+      updateScoreCard('aaNormal', aaNormal);
+      updateScoreCard('aaaLarge', aaaLarge);
+      updateScoreCard('aaaNormal', aaaNormal);
+
+      // Update ratio color
+      const ratioEl = document.getElementById('contrastRatio');
+      if (aaaNormal) ratioEl.className = 'text-4xl font-bold text-green-400';
+      else if (aaNormal) ratioEl.className = 'text-4xl font-bold text-yellow-400';
+      else ratioEl.className = 'text-4xl font-bold text-red-400';
+    }
+
+    function updateScoreCard(id, pass) {
+      const card = document.getElementById(id);
+      card.querySelector('.text-3xl').textContent = pass ? '✓' : '✗';
+      card.className = `glass-dark rounded-2xl p-6 text-center ${pass ? 'border border-green-500/50' : 'border border-red-500/30'}`;
+    }
+
+    // Event listeners
+    document.getElementById('textColor')?.addEventListener('input', updateContrast);
+    document.getElementById('bgColor')?.addEventListener('input', updateContrast);
+    document.getElementById('textColorHex')?.addEventListener('change', (e) => {
+      document.getElementById('textColor').value = e.target.value;
+      updateContrast();
+    });
+    document.getElementById('bgColorHex')?.addEventListener('change', (e) => {
+      document.getElementById('bgColor').value = e.target.value;
+      updateContrast();
+    });
+
+    // Initialize
+    updateContrast();
+
+    // Scroll animations
+    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate-slide-up');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('section h2, section p, .glass').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+</body>
+</html>

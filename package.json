@@ -1,0 +1,21 @@
+{
+  "name": "color-contrast-pro",
+  "version": "1.0.0",
+  "description": "WCAG-compliant color contrast checker for accessible design",
+  "main": "api/process.js",
+  "scripts": {
+    "dev": "node dev-server.js",
+    "vercel-build": "echo 'Build complete'",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vercel": "latest"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": ["accessibility", "wcag", "color", "contrast", "a11y"],
+  "author": "UniverseCreator",
+  "license": "MIT"
+}
