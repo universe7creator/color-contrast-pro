@@ -16,9 +16,14 @@
   "status": "ready_to_deploy",
   "vercel_url": "https://color-contrast-pro.vercel.app",
   "github_url": null,
-  "lemonsqueezy_checkout_url": "https://profitbridge.lemonsqueezy.com/checkout/buy/placeholder-color-contrast-pro",
   "lemonsqueezy_product_id": null,
   "webhook_url": "https://color-contrast-pro.vercel.app/api/webhook",
   "created_cycle": 939,
-  "deployed_cycle": null
+  "deployed_cycle": null,
+  "checkout_url": "https://profitbridge.lemonsqueezy.com/checkout/buy/aa92fb04-8962-472c-ad5b-1d4cafdd3e08",
+  "checkout_status": "pending_lemonsqueezy_creation",
+  "seo_optimized": true,
+  "seo_optimized_at": "2026-04-21T17:47:00Z",
+  "payment_provider": "lemonsqueezy",
+  "spec_version": "1.0"
 }
