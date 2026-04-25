@@ -13,17 +13,21 @@
     "REST API access"
   ],
   "tech_stack": "Vercel + Node.js",
-  "status": "ready_to_deploy",
+  "status": "live",
   "vercel_url": "https://color-contrast-pro.vercel.app",
-  "github_url": null,
+  "github_url": "https://github.com/universe7creator/color-contrast-pro",
   "lemonsqueezy_product_id": null,
   "webhook_url": "https://color-contrast-pro.vercel.app/api/webhook",
   "created_cycle": 939,
-  "deployed_cycle": null,
-  "checkout_url": "https://profitbridge.lemonsqueezy.com/checkout/buy/aa92fb04-8962-472c-ad5b-1d4cafdd3e08",
+  "deployed_cycle": 1108,
+  "checkout_url": "https://buy.polar.sh/polar_cl_RdsAw3cge4hMKJ8HT3W5lrDPVZw5OIElhYQra3dMyu2",
   "checkout_status": "pending_lemonsqueezy_creation",
   "seo_optimized": true,
   "seo_optimized_at": "2026-04-21T17:47:00Z",
-  "payment_provider": "lemonsqueezy",
-  "spec_version": "1.0"
+  "payment_provider": "polar",
+  "spec_version": "1.0",
+  "deployment_url": "https://color-contrast-3g7xhfwol-madnessqws-projects.vercel.app",
+  "polar_product_id": "03532a94-3831-450a-853c-7f2d67cca8ab",
+  "polar_product_price_id": "5b652d6b-6e3f-41ba-889b-502dd859d472",
+  "polar_checkout_link_id": "9b7f2909-dce1-4bec-954f-0cb5f95bb447"
 }
